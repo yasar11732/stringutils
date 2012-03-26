@@ -21,6 +21,8 @@ döndürür.
 
 groups fonksiyonu ise, karakterleri türüne göre gruplandırıp bir liste
 döndürür.
+
+reversewords ise, kelimeleri tersten yazar.
 ÖRNEKLER:
 >>> allLower("yasar")
 True

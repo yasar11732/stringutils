@@ -59,3 +59,4 @@ def category(char):
 
 categories = lambda string : [category(x) for x in string]
 groups = lambda string: ["".join(iterator) for (kate, iterator) in groupby(string,category)]
+reversewords = lambda string: unwords("".join(reversed(x)) for x in words(string))
