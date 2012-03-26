@@ -13,46 +13,102 @@ only* olmak üzere 5 fonksiyon ailesini içinde bulundurur. Buradaki
     Octal -> Octal (0..7)
     Printable -> Yazdırılabilir karakterler
 
-Bunlara ek olarak, words ve unwords fonksiyonları, kelimelere böler ve birleştirir.
-Yazım kolaylığı haricinde, " ".join() veya string.split(" ") fonksiyonlarından bir farkı
-yoktur. lines ve unlines ise, aynısının satırlara bölen ve birleştiren halidir. Bir de
-categories fonksiyonu var. Bu da her karakterin hangi kategoride olduğuna dair bir liste
-döndürür.
+any ile başlayan fonksiyonlar, aradığı özellik karakter dizgesi
+içerisinde en az 1 tane bulunuyor mu diye bakıyor. 
 
-groups fonksiyonu ise, karakterleri türüne göre gruplandırıp bir liste
-döndürür.
+Kod:
+>>> anyLetter(" 32!")
+False
+>>> anyLetter("as")
+True
+>>> anyUpper("as")
+False
+>>> anyLower("as")
+True
+>>>
 
-reversewords ise, kelimeleri tersten yazar.
-ÖRNEKLER:
->>> allLower("yasar")
+all ile başlayan fonksiyonlar, karakterlerin tümü o özelliği taşıyor mu diye
+bakıyor, mesela
+Kod:
+>>> allLower("as")
 True
->>> anyLower("yasar")
-True
->>> anyUpper("yasar")
+>>> allLower("Aas")
 False
->>> anyUpper("Yasar")
+>>> allDigit("123432")
 True
->>> anyPunctuation("yasar")
+>>> allDigit("123432!!")
 False
->>> anyPunctuation("yasar!!")
+>>> allPunctuation("!!!..!!")
 True
->>> removePunctuation("yasar!!")
+
+remove ile başlayan fonksiyonlar, o özelliği taşıyan karakterleri siliyorlar.
+Mesela
+Kod:
+>>> removeWhitespace("Yasar Arabacı")
+'YasarArabac\xc4\xb1'
+>>> removeWhitespace("Yasar Arabaci")
+'YasarArabaci'
+>>> removeDigit("yasar11732")
 'yasar'
->>> onlyPunctuation("yasar!!!")
-'!!!'
->>> onlyAlphanum("Yasar 5 osman !!")
-'Yasar5osman'
->>> removeAlphanum("Yasar 5 osman !!")
-'   !!'
->>> categories("Yasar 5 osman !!")
-['Upper', 'Lower', 'Lower', 'Lower', 'Lower', 'Whitespace', 'Digit',
-'Whitespace', 'Lower', 'Lower', 'Lower', 'Lower', 'Lower', 'Whitespace',
-'Punctuation', 'Punctuation']
->>> words("Yasar 5 osman !!")
-['Yasar', '5', 'osman', '']
->>> unwords(['Yasar', '5', 'osman', ''])
-'Yasar 5 osman '
->>> groups("asdfkd")
-['asdfkd']
->>> groups("asdfkd   !!! \n\n\n asdfasd AAAAA")
-['asdfkd', '   ', '!!!', ' \n\n\n ', 'asdfasd', ' ', 'AAAAA']
+>>> removePunctuation("#yasar!")
+'yasar'
+
+
+only ile başlayan fonksiyonlar ise, remove'un tam tersi, sadece o özelliği
+taşıyan karakterleri bırakıyor.
+Kod:
+>>> onlyLower("Yasar Arabaci")
+'asarrabaci'
+>>> onlyDigit("yasar11732")
+'11732'
+
+
+Bunlara ek olarak, words ve unwords, lines, unlines gibi fonksiyonlar var, 
+Kod:
+>>> onlyDigit("yasar11732")
+'11732'
+>>> words("Merhaba Dunya!")
+['Merhaba', 'Dunya']
+>>> unwords(['Merhaba', 'Dunya'])
+'Merhaba Dunya'
+>>> lines("Merhaba\nDunya")
+['Merhaba', 'Dunya']
+>>> unlines(['Merhaba', 'Dunya'])
+'Merhaba\nDunya'
+
+
+categories ise, her karakter için, o karakterin hangi kategoride olduğuna dair
+bir liste döndürüyor. Eğer bir karakter birden fazla kategoride ise, en yüksek
+önceliği olaran kategori gösteriliyor. Örneğin:
+Kod:
+>>> categories("Yasar, Arabaci! 1234")
+['Upper', 'Lower', 'Lower', 'Lower', 'Lower', 'Punctuation', 'Whitespace',
+'Upper', 'Lower', 'Lower', 'Lower', 'Lower', 'Lower', 'Lower', 'Punctuation',
+'Whitespace', 'Digit', 'Digit', 'Digit', 'Digit']
+
+Şu andaki en son versiyonda, bunlara ek olarak şunlar da var;
+groups, karakter dizgesini kategorilerine göre gruplandırıyor. Mesela;
+Kod:
+>>> groups("Yasar, Arabaci! 1234")
+['Y', 'asar', ',', ' ', 'A', 'rabaci', '!', ' ', '1234']
+
+reversewords, kelimeleri tersine çeviriyor:
+Kod:
+>>> reversewords("Yasar Arabaci")
+'rasaY icabarA'
+
+
+Son olarak da, istersen makestrfunctions komutunu kullanarak, kendi
+fonksiyonları oluşturabilirsin, mesela;
+Kod:
+>>> makestrfunctions("abc123","Benimkarakter")
+>>> anyBenimkarakter("yasar")
+True
+>>> allBenimkarakter("yasar")
+False
+>>> removeBenimkarakter("yasar")
+'ysr'
+>>> onlyBenimkarakter("yasar")
+'aa'
+>>> onlyBenimkarakter("yasar11732")
+'aa1132'
