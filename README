@@ -1,4 +1,4 @@
-stringutils, metin belgeleriyle çalışırken ihtiyaç duyulabilecek
+stringutils,ascii metinlerle çalışırken ihtiyaç duyulabilecek
 fonksiyonların olduğu basit bir modüldür. is*, all*, any*, remove* ve
 only* olmak üzere 5 fonksiyon ailesini içinde bulundurur. Buradaki
 * yerine, aşağıdakilerden biri gelebilir:
