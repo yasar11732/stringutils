@@ -1,0 +1,44 @@
+stringutils, metin belgeleriyle çalışırken ihtiyaç duyulabilecek
+fonksiyonların olduğu basit bir modüldür. is*, all*, any*, remove* ve
+only* olmak üzere 5 fonksiyon ailesini içinde bulundurur. Buradaki
+* yerine, aşağıdakilerden biri gelebilir:
+    Letter -> Harf
+    Digit -> Sayı
+    Alphanum -> harf ve sayı
+    Punctuation -> noktalama işareti
+    Whitespace -> boşluk, tab, enter vs.
+    Lower -> küçük harf
+    Upper -> Büyük Harf
+    Hex -> Hexedecimal (0..9A..F)
+    Octal -> Octal (0..7)
+    Printable -> Yazdırılabilir karakterler
+
+ÖRNEKLER:
+>>> allLower("yasar")
+True
+>>> anyLower("yasar")
+True
+>>> anyUpper("yasar")
+False
+>>> anyUpper("Yasar")
+True
+>>> anyPunctuation("yasar")
+False
+>>> anyPunctuation("yasar!!")
+True
+>>> removePunctuation("yasar!!")
+'yasar'
+>>> onlyPunctuation("yasar!!!")
+'!!!'
+>>> onlyAlphanum("Yasar 5 osman !!")
+'Yasar5osman'
+>>> removeAlphanum("Yasar 5 osman !!")
+'   !!'
+>>> categories("Yasar 5 osman !!")
+['Upper', 'Lower', 'Lower', 'Lower', 'Lower', 'Whitespace', 'Digit',
+'Whitespace', 'Lower', 'Lower', 'Lower', 'Lower', 'Lower', 'Whitespace',
+'Punctuation', 'Punctuation']
+>>> words("Yasar 5 osman !!")
+['Yasar', '5', 'osman', '']
+>>> unwords(['Yasar', '5', 'osman', ''])
+'Yasar 5 osman '
