@@ -25,10 +25,10 @@ True
 False
 >>> anyLower("as")
 True
->>>
 
 all ile başlayan fonksiyonlar, karakterlerin tümü o özelliği taşıyor mu diye
-bakıyor, mesela
+bakıyor.
+
 Kod:
 >>> allLower("as")
 True
@@ -42,10 +42,8 @@ False
 True
 
 remove ile başlayan fonksiyonlar, o özelliği taşıyan karakterleri siliyorlar.
-Mesela
+
 Kod:
->>> removeWhitespace("Yasar Arabacı")
-'YasarArabac\xc4\xb1'
 >>> removeWhitespace("Yasar Arabaci")
 'YasarArabaci'
 >>> removeDigit("yasar11732")
@@ -53,20 +51,18 @@ Kod:
 >>> removePunctuation("#yasar!")
 'yasar'
 
-
 only ile başlayan fonksiyonlar ise, remove'un tam tersi, sadece o özelliği
 taşıyan karakterleri bırakıyor.
+
 Kod:
 >>> onlyLower("Yasar Arabaci")
 'asarrabaci'
 >>> onlyDigit("yasar11732")
 '11732'
 
-
 Bunlara ek olarak, words ve unwords, lines, unlines gibi fonksiyonlar var, 
 Kod:
->>> onlyDigit("yasar11732")
-'11732'
+
 >>> words("Merhaba Dunya!")
 ['Merhaba', 'Dunya']
 >>> unwords(['Merhaba', 'Dunya'])
@@ -76,30 +72,31 @@ Kod:
 >>> unlines(['Merhaba', 'Dunya'])
 'Merhaba\nDunya'
 
-
 categories ise, her karakter için, o karakterin hangi kategoride olduğuna dair
 bir liste döndürüyor. Eğer bir karakter birden fazla kategoride ise, en yüksek
-önceliği olaran kategori gösteriliyor. Örneğin:
+önceliği olaran kategori gösteriliyor.
+
 Kod:
 >>> categories("Yasar, Arabaci! 1234")
 ['Upper', 'Lower', 'Lower', 'Lower', 'Lower', 'Punctuation', 'Whitespace',
 'Upper', 'Lower', 'Lower', 'Lower', 'Lower', 'Lower', 'Lower', 'Punctuation',
 'Whitespace', 'Digit', 'Digit', 'Digit', 'Digit']
 
-Şu andaki en son versiyonda, bunlara ek olarak şunlar da var;
-groups, karakter dizgesini kategorilerine göre gruplandırıyor. Mesela;
+groups, karakter dizgesini kategorilerine göre gruplandırıyor.
+
 Kod:
 >>> groups("Yasar, Arabaci! 1234")
 ['Y', 'asar', ',', ' ', 'A', 'rabaci', '!', ' ', '1234']
 
-reversewords, kelimeleri tersine çeviriyor:
+reversewords, kelimeleri tersine çeviriyor.
+
 Kod:
 >>> reversewords("Yasar Arabaci")
 'rasaY icabarA'
 
 
-Son olarak da, istersen makestrfunctions komutunu kullanarak, kendi
-fonksiyonları oluşturabilirsin, mesela;
+makestrfunctions ile kendi fonksiyonlarınız oluşturabilirsiniz:
+
 Kod:
 >>> makestrfunctions("abc123","Benimkarakter")
 >>> anyBenimkarakter("yasar")
