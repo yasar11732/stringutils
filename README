@@ -13,6 +13,12 @@ only* olmak üzere 5 fonksiyon ailesini içinde bulundurur. Buradaki
     Octal -> Octal (0..7)
     Printable -> Yazdırılabilir karakterler
 
+Bunlara ek olarak, words ve unwords fonksiyonları, kelimelere böler ve birleştirir.
+Yazım kolaylığı haricinde, " ".join() veya string.split(" ") fonksiyonlarından bir farkı
+yoktur. lines ve unlines ise, aynısının satırlara bölen ve birleştiren halidir. Bir de
+categories fonksiyonu var. Bu da her karakterin hangi kategoride olduğuna dair bir liste
+döndürür.
+
 ÖRNEKLER:
 >>> allLower("yasar")
 True
