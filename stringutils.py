@@ -57,6 +57,14 @@ def category(char):
             return cat
     raise ValueError("Couldn't determine the type of %s" % char)
 
+def makestrfunctions(string,k):
+    predicate = isSomething(string)
+    globals()["is" + k] = predicate
+    globals()["all" + k] = allSomething(predicate)
+    globals()["any" + k] = anySomething(predicate)
+    globals()["remove" + k] = removeSomething(predicate)
+    globals()["only" + k] = onlySomething(predicate)
+
 categories = lambda string : [category(x) for x in string]
 groups = lambda string: ["".join(iterator) for (kate, iterator) in groupby(string,category)]
 reversewords = lambda string: unwords("".join(reversed(x)) for x in words(string))
