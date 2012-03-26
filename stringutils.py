@@ -1,6 +1,7 @@
 from string import (letters, digits, punctuation,
                     whitespace, lowercase, uppercase,
                     hexdigits, octdigits, printable)
+from itertools import groupby
 from os import name as osname
 
 if osname == "nt":
@@ -57,3 +58,4 @@ def category(char):
     raise ValueError("Couldn't determine the type of %s" % char)
 
 categories = lambda string : [category(x) for x in string]
+groups = lambda string: ["".join(iterator) for (kate, iterator) in groupby(string,category)]

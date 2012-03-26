@@ -19,6 +19,8 @@ yoktur. lines ve unlines ise, aynısının satırlara bölen ve birleştiren hal
 categories fonksiyonu var. Bu da her karakterin hangi kategoride olduğuna dair bir liste
 döndürür.
 
+groups fonksiyonu ise, karakterleri türüne göre gruplandırıp bir liste
+döndürür.
 ÖRNEKLER:
 >>> allLower("yasar")
 True
@@ -48,3 +50,7 @@ True
 ['Yasar', '5', 'osman', '']
 >>> unwords(['Yasar', '5', 'osman', ''])
 'Yasar 5 osman '
+>>> groups("asdfkd")
+['asdfkd']
+>>> groups("asdfkd   !!! \n\n\n asdfasd AAAAA")
+['asdfkd', '   ', '!!!', ' \n\n\n ', 'asdfasd', ' ', 'AAAAA']
